@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public bool isAlive = false;
-    public int numNeighbors = 0;
+    public bool alive = false;
+    public bool nextGen;
+    public int neighbors = 0;
+    SpriteRenderer spriteRenderer;
 
-    public void SetAlive (bool alive)
+    public void UpdateStatus()
     {
-        if (alive)
-        {
-            GetComponent<SpriteRenderer>().enabled = true;
-        }
-        else
-        {
-            GetComponent <SpriteRenderer>().enabled = false;
-        }
+        spriteRenderer ??= GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = alive;
     }
 }
